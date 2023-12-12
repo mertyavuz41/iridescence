@@ -361,6 +361,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#plots-implot" class="md-nav__link">
+    Plots (ImPlot)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -544,6 +551,13 @@
         <li class="md-nav__item">
   <a href="#image-2d-texture" class="md-nav__link">
     Image (2D texture)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plots-implot" class="md-nav__link">
+    Plots (ImPlot)
   </a>
   
 </li>
@@ -851,6 +865,29 @@ Closer look at the splatting result: Points are rendered as oriented disks</p>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">update_image</span><span class="p">(</span><span class="s">&quot;group1/image0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">texture</span><span class="p">);</span>
 </code></pre></div>
 <p><img alt="Screenshot_20230101_011918" src="https://user-images.githubusercontent.com/31344317/210149509-c096fdcb-7337-44bf-833d-ce369378bbe1.png" /></p>
+<h2 id="plots-implot">Plots (ImPlot)</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;implot.h&gt;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;guik/viewer/light_viewer.hpp&gt;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1">// Basic plotting</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">setup_plot</span><span class="p">(</span><span class="s">&quot;curves_y&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">);</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">update_plot_line</span><span class="p">(</span><span class="s">&quot;curves_y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sin&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ys_sin</span><span class="p">);</span><span class="w">  </span><span class="c1">// When only Y values are given, X values become index IDs</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">update_plot_stairs</span><span class="p">(</span><span class="s">&quot;curves_y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sin_stairs&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ys_sin</span><span class="p">);</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">xs_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ys_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1">// If a plot name contains &quot;/&quot;, the string before the slash is recognized as a group name.</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="c1">// Plots with the same group name are displayed in the same tab.</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">setup_plot</span><span class="p">(</span><span class="s">&quot;group02/circle&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="n">ImPlotFlags_Equal</span><span class="p">);</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">update_plot_line</span><span class="p">(</span><span class="s">&quot;group02/circle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;circle&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xs_circle</span><span class="p">,</span><span class="w"> </span><span class="n">ys_circle</span><span class="p">,</span><span class="w"> </span><span class="n">ImPlotLineFlags_Loop</span><span class="p">);</span>
+</code></pre></div>
+<p><img alt="Screenshot_20231212_103830" src="https://github.com/koide3/iridescence/assets/31344317/0036c0ab-63bb-451f-8f0f-e8931c820f71" /></p>
 
 
 

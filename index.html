@@ -266,6 +266,19 @@
     Installation
   </a>
   
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -482,6 +495,19 @@
     Installation
   </a>
   
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -571,7 +597,17 @@
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># [Optional] Build and install python bindings</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nb">cd</span><span class="w"> </span>..
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>sudo<span class="w"> </span>python3<span class="w"> </span>setup.py<span class="w"> </span>install
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># [Optional2] Install stubs for autocomplete</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>pip<span class="w"> </span>install<span class="w"> </span>pybind11-stubgen
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nb">cd</span><span class="w"> </span>~/.local/lib/python3.10/site-packages
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>pybind11-stubgen<span class="w"> </span>-o<span class="w"> </span>.<span class="w"> </span>--ignore-invalid<span class="o">=</span>all<span class="w"> </span>pyridescence
 </code></pre></div>
+<h3 id="docker">Docker</h3>
+<ul>
+<li>Build: <code>docker build -t iridescence -f docker/ubuntu/Dockerfile .</code></li>
+<li>Run: <code>bash docker/run.sh iridescence</code></li>
+</ul>
 <h2 id="use-iridescence-in-your-cmake-project">Use Iridescence in your cmake project</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Add FindIridescence.cmake to your project</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>wget<span class="w"> </span>-P<span class="w"> </span>path/to/your_project/cmake/<span class="w"> </span>https://github.com/koide3/iridescence/raw/master/cmake/FindIridescence.cmake
