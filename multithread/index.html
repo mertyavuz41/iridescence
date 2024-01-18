@@ -521,6 +521,7 @@
 <a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="thread-safe-operations">Thread-safe operations</h2>
+<p><code>append_text</code> and <code>clear_text</code> are thread-safe.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">append_text</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">);</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">viewer</span><span class="o">-&gt;</span><span class="n">clear_text</span><span class="p">();</span>
 </code></pre></div>
@@ -546,7 +547,7 @@
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Because AsyncViewer runs the viewer in another thread, calling the standard viewer functions in this main thread is unsafe.</p>
+<p>Because AsyncViewer runs the viewer in a background thread, calling the standard viewer functions in this main thread is unsafe.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">async_viewer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">guik</span><span class="o">::</span><span class="n">async_viewer</span><span class="p">();</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="c1">// The below line may cause segfaults and program crashes.</span>
